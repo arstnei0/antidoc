@@ -7,8 +7,10 @@ import autoImport from "astro-auto-import"
 import vanillaExtract from "astro-vanilla-extract"
 import autoImportVite from "unplugin-auto-import/vite"
 import icons from "unplugin-icons/vite"
+import { config } from "./src/config"
 
 export default defineConfig({
+	site: config.siteUrl,
 	integrations: [
 		autoImport({
 			imports: [{}],

@@ -8,10 +8,11 @@ import Header from "~/components/layout/header/Header.astro"
 const Props = z.object({
 	title: z.string().optional(),
 	lang: z.string().default("en"),
+	mainClass: z.string().optional(),
 })
 export type Props = z.input<typeof Props>
 
-const { title, lang } = Props.parse(Astro.props)
+const { title, lang, mainClass } = Props.parse(Astro.props)
 ---
 
 <html lang={lang}>
@@ -31,34 +32,28 @@ const { title, lang } = Props.parse(Astro.props)
 			rel="stylesheet"
 		/>
 
+		{/* dark and light mode */}
 		<script is:inline>
-			const mode1 = localStorage.getItem("m")
-			if (!mode1) localStorage.setItem("m", "s")
-
-			const mode = mode1 ?? localStorage.getItem("m")
-			let modeClassName
-
-			if (mode === "s")
-				modeClassName =
+			const itemKey = "m"
+			const $ = localStorage.getItem(itemKey)
+			if (!$)
+				localStorage.setItem(
+					itemKey,
 					globalThis.matchMedia &&
-					globalThis.matchMedia("(prefers-color-scheme: dark)").matches
+						globalThis.matchMedia("(prefers-color-scheme: dark)").matches
 						? "d"
-						: "l"
-			else if (mode === "d") modeClassName = "d"
-			else modeClassName = "l"
-
-			modeClassName && document.documentElement.classList.add(modeClassName)
-
+						: "l",
+				)
+			const mode = $ ?? localStorage.getItem(itemKey)
+			document.documentElement.classList.add(mode)
 			globalThis.m = mode
-
-			// is mobile
-			globalThis.isM = !!(
-				globalThis.matchMedia && globalThis.matchMedia(`(max-width: 700px)`).matches
-			)
 		</script>
 	</head>
 	<body>
 		<Header />
-		<slot />
+
+		<main class={mainClass ?? ""}>
+			<slot />
+		</main>
 	</body>
 </html>

@@ -42,12 +42,7 @@ const { width, height, class: className } = Props.parse(Astro.props)
 		</linearGradient>
 	</defs>
 	<style>
-		@media (prefers-color-scheme: dark) {
-			#logo {
-				filter: invert(100%);
-			}
-		}
-		.dark #logo {
+		.d #logo {
 			filter: invert(100%);
 		}
 	</style>

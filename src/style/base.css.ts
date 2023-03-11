@@ -1,4 +1,8 @@
-import { c, font, globalStyle, s, transition } from "./$.css"
+import { c, flex, font, globalStyle, s, transition } from "./$.css"
+
+globalStyle("body, html", {
+	height: "100%",
+})
 
 globalStyle("body", {
 	backgroundColor: c.bg.normal,
@@ -8,6 +12,13 @@ globalStyle("body", {
 	margin: 0,
 })
 
+globalStyle("main", {
+	...flex.bare,
+	flexDirection: "column",
+	minHeight: "100%",
+})
+
 globalStyle("*", {
 	transition,
+	boxSizing: "border-box",
 })

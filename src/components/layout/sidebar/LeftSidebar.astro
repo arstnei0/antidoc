@@ -1,0 +1,17 @@
+---
+import { SidebarItem } from "~/sidebar"
+import { leftSidebar } from "./LeftSidebar.css"
+import LeftSidebarItem from "./LeftSidebarItem.astro"
+
+export interface Props {
+	items: SidebarItem[]
+}
+
+const { items } = Astro.props
+---
+
+<div class={leftSidebar.outer}>
+	<aside class={leftSidebar.wrapper}>
+		{items.map(item => <LeftSidebarItem item={item} />)}
+	</aside>
+</div>

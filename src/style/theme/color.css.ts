@@ -19,15 +19,15 @@ export const c = createGlobalTheme(".d", {
 // Light theme
 createGlobalTheme(".l", c, {
 	bg: {
-		normal: "#123456",
-		light: "#1a1a1a",
-		lighter: "#242424",
-		lighterer: "#363636",
-		lightest: "#696969",
+		normal: "#FFFFFF",
+		light: "#F8F8F8",
+		lighter: "#EEEEEE",
+		lighterer: "#E6E6E6",
+		lightest: "#DDDDDD",
 	},
 	font: {
-		primary: "#EEEEEE",
-		accent: "#A6E3E9",
+		primary: "#272727",
+		accent: "#7286D3",
 	},
 	primary: "#609966",
 })

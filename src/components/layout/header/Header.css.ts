@@ -16,19 +16,19 @@ export const header = {
 	wrapper: style([
 		flex.between,
 		{
-			padding: ".7em 1.7em",
+			padding: ".45em 1.7em",
 			backgroundColor: c.bg.light,
 			position: "sticky",
 			top: 0,
 			":hover": {
-				boxShadow: `${c.bg.lighter}BB 0px 4px 12px;`,
+				boxShadow: `${c.bg.lighter} 0px 4px 12px;`,
 			},
 		},
 	]),
 	wrapperFixed: style({}),
 
 	left: style([flex.center]),
-	right: style([flex.center, { gap: ".6em" }]),
+	right: style([flex.center, { gap: ".3em" }]),
 
 	icon: style([hoverScale, { ":hover": { filter: "hue-rotate(90deg)" } }]),
 

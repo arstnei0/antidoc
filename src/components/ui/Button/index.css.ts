@@ -1,4 +1,14 @@
-import { c, borderRadius, transition, globalStyle, style, s, recipe, RecipeVariants } from "style"
+import {
+	c,
+	borderRadius,
+	transition,
+	globalStyle,
+	style,
+	s,
+	recipe,
+	RecipeVariants,
+	StyleRule,
+} from "style"
 
 export const button = recipe({
 	base: {
@@ -132,3 +142,18 @@ globalStyle(`${button}:hover ${pointer}::before`, {
 	borderColor: c.bg.normal,
 	right: "0",
 })
+
+const buttonA = {
+	color: "inherit",
+	backgroundColor: "inherit",
+	padding: "none",
+	margin: "inherit",
+	gap: "inherit",
+	borderRadius: "inherit",
+	fontSize: "inherit",
+} satisfies StyleRule
+globalStyle(`${button} a`, buttonA)
+globalStyle(`${button} a::before`, {
+	display: "none",
+})
+globalStyle(`${button} a:hover`, buttonA)

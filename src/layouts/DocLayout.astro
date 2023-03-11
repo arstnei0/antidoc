@@ -1,0 +1,25 @@
+---
+import { MarkdownHeading } from "astro"
+import { CollectionEntry } from "astro:content"
+import BaseLayout from "./BaseLayout.astro"
+import LeftSidebar from "~/components/layout/sidebar/LeftSidebar.astro"
+import { sidebar } from "config"
+import { docLayout } from "./DocLayout.css"
+
+export interface Props {
+	entry: CollectionEntry<"docs">
+	headings: MarkdownHeading[]
+}
+
+const { headings, entry } = Astro.props
+---
+
+<BaseLayout>
+	<div class={docLayout.wrapper}>
+		<LeftSidebar items={sidebar} />
+
+		<article>
+			<slot />
+		</article>
+	</div>
+</BaseLayout>

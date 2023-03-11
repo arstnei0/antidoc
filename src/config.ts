@@ -7,3 +7,5 @@ export const config = {
 		github: "https://github.com/zihan-ch/antidoc",
 	},
 } as const
+
+export * from "./sidebar"

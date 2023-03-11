@@ -1,0 +1,14 @@
+---
+import { SidebarItem } from "~/sidebar"
+import { leftSidebar } from "./LeftSidebar.css"
+
+export interface Props {
+	item: SidebarItem
+}
+
+const { item } = Astro.props
+---
+
+<div class={leftSidebar.item}>
+	<h2>{item.title}</h2>
+</div>
