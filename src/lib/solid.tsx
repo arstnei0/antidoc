@@ -1,5 +1,7 @@
 export * from "solid-js"
-export * from "solid-use/atom"
+import atom from "solid-use/atom"
+export { atom }
+export * from "solid-use/props"
 
 export type CombineProps<Attr, Props> = Omit<Attr, keyof Props> & Props
 

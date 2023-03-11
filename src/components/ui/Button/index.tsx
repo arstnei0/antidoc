@@ -7,6 +7,7 @@ const Button = (
 		{
 			type?: ButtonRecipe["type"]
 			size?: ButtonRecipe["size"]
+			round?: boolean
 		}
 	>,
 ) => {

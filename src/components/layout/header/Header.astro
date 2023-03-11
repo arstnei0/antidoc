@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets"
+import { config } from "config"
+import Logo from "~/components/Logo.astro"
+import { header } from "./Header.css"
+import HeaderItem from "./HeaderItem.astro"
+import MdiGithub from "~icons/mdi/github"
+import HeaderWrapper from "./HeaderWrapper"
+import ThemeToggleButton from "./ThemeToggleButton"
+---
+
+<HeaderWrapper client:idle>
+	<div class={header.left}>
+		<Logo class={header.icon} width="40" height="40" />
+		<h1 class={header.title}>
+			<a href={config.siteUrl} class={header.titleLink}>{config.title}</a>
+		</h1>
+	</div>
+	<div class={header.right}>
+		<HeaderItem>
+			<a href={config.links.github} target="_blank"><MdiGithub />Github</a>
+		</HeaderItem>
+		<ThemeToggleButton client:idle />
+	</div>
+</HeaderWrapper>

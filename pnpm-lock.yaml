@@ -4,7 +4,10 @@ specifiers:
   '@astrojs/mdx': ^0.18.0
   '@astrojs/solid-js': ^2.1.0
   '@danielx/civet': ^0.5.85
+  '@iconify-json/mdi': ^1.1.50
+  '@solid-primitives/event-listener': ^2.2.8
   '@solid-primitives/props': ^3.1.2
+  '@solid-primitives/scroll': ^2.0.10
   '@types/fs-extra': ^11.0.1
   '@types/prettier': ^2.7.2
   '@vanilla-extract/css': ^1.10.0
@@ -19,18 +22,21 @@ specifiers:
   pnpm: ^7.29.1
   prettier: ^2.8.4
   sass: ^1.59.2
-  solid-js: ^1.6.13
+  solid-js: 1.6.12
   solid-use: ^0.7.0
   type-fest: ^3.6.1
   unplugin-auto-import: ^0.15.1
+  unplugin-icons: ^0.15.3
   vite-plugin-civet: ^0.2.5
   zod: ^3.21.4
 
 dependencies:
   '@astrojs/mdx': 0.18.0_astro@2.1.2
-  '@astrojs/solid-js': 2.1.0_solid-js@1.6.13
+  '@astrojs/solid-js': 2.1.0_solid-js@1.6.12
   '@danielx/civet': 0.5.85
-  '@solid-primitives/props': 3.1.2_solid-js@1.6.13
+  '@solid-primitives/event-listener': 2.2.8_solid-js@1.6.12
+  '@solid-primitives/props': 3.1.2_solid-js@1.6.12
+  '@solid-primitives/scroll': 2.0.10_solid-js@1.6.12
   '@vanilla-extract/css': 1.10.0
   '@vanilla-extract/recipes': 0.3.0_qfizfuqympj3byv36k7ie7wo3i
   '@vanilla-extract/vite-plugin': 3.8.0_sass@1.59.2
@@ -43,13 +49,15 @@ dependencies:
   pnpm: 7.29.1
   prettier: 2.8.4
   sass: 1.59.2
-  solid-js: 1.6.13
-  solid-use: 0.7.0_solid-js@1.6.13
+  solid-js: 1.6.12
+  solid-use: 0.7.0_solid-js@1.6.12
   unplugin-auto-import: 0.15.1
+  unplugin-icons: 0.15.3
   vite-plugin-civet: 0.2.5_sass@1.59.2
   zod: 3.21.4
 
 devDependencies:
+  '@iconify-json/mdi': 1.1.50
   '@types/fs-extra': 11.0.1
   '@types/prettier': 2.7.2
   type-fest: 3.6.1
@@ -62,6 +70,13 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.17
+    dev: false
+
+  /@antfu/install-pkg/0.1.1:
+    resolution: {integrity: sha512-LyB/8+bSfa0DFGC06zpCEfs89/XoWZwws5ygEa5D+Xsm3OfI+aXQ86VgVG7Acyef+rSZ5HE7J8rrxzrQeM3PjQ==}
+    dependencies:
+      execa: 5.1.1
+      find-up: 5.0.0
     dev: false
 
   /@antfu/utils/0.7.2:
@@ -152,14 +167,14 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/solid-js/2.1.0_solid-js@1.6.13:
+  /@astrojs/solid-js/2.1.0_solid-js@1.6.12:
     resolution: {integrity: sha512-p07DP9NRWJPjtF+CzPZ9lzOMkoyw6wSs3S6g3OZUxR+DVQy3VIXXDqCcnZZVJI34VakkHuViZaoNNkBW/9I54w==}
     engines: {node: '>=16.12.0'}
     peerDependencies:
       solid-js: ^1.4.3
     dependencies:
       babel-preset-solid: 1.6.13
-      solid-js: 1.6.13
+      solid-js: 1.6.12
       vitefu: 0.2.4
     transitivePeerDependencies:
       - '@babel/core'
@@ -867,6 +882,28 @@ packages:
     dev: false
     optional: true
 
+  /@iconify-json/mdi/1.1.50:
+    resolution: {integrity: sha512-SgbT5w5eHCdOG74ZWPz7HlTGk6VsifIJhNi6lAsxj/5Nlqt6Cz4LlQmSa9eecU9p075Jub2aAx/o7YI+GCahRQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify/types/2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+
+  /@iconify/utils/2.1.5:
+    resolution: {integrity: sha512-6MvDI+I6QMvXn5rK9KQGdpEE4mmLTcuQdLZEiX5N+uZB+vc4Yw9K1OtnOgkl8mp4d9X0UrILREyZgF1NUwUt+Q==}
+    dependencies:
+      '@antfu/install-pkg': 0.1.1
+      '@antfu/utils': 0.7.2
+      '@iconify/types': 2.0.0
+      debug: 4.3.4
+      kolorist: 1.7.0
+      local-pkg: 0.4.3
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@jridgewell/gen-mapping/0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}
     engines: {node: '>=6.0.0'}
@@ -993,21 +1030,50 @@ packages:
       picomatch: 2.3.1
     dev: false
 
-  /@solid-primitives/props/3.1.2_solid-js@1.6.13:
+  /@solid-primitives/event-listener/2.2.8_solid-js@1.6.12:
+    resolution: {integrity: sha512-I3Fw6+1g1YrXBWHwnNi6UaYuRVeaRBN2pvfGvKgnHH4OtfN6mgkGXi7s+/QOJjS29sEdwRDR9tQgxckaIxKZ7A==}
+    peerDependencies:
+      solid-js: ^1.6.0
+    dependencies:
+      '@solid-primitives/utils': 5.4.0_solid-js@1.6.12
+      solid-js: 1.6.12
+    dev: false
+
+  /@solid-primitives/props/3.1.2_solid-js@1.6.12:
     resolution: {integrity: sha512-d5HUGpTvNVRSJD4VUxqgdwdNap8b+dWDW+BnjKS2z+w0w/gxgkEr+RF0OJ6CNB3kBZ7yhPW4ApHnei7vrgAPFQ==}
     peerDependencies:
       solid-js: ^1.6.0
     dependencies:
-      '@solid-primitives/utils': 5.4.0_solid-js@1.6.13
-      solid-js: 1.6.13
+      '@solid-primitives/utils': 5.4.0_solid-js@1.6.12
+      solid-js: 1.6.12
     dev: false
 
-  /@solid-primitives/utils/5.4.0_solid-js@1.6.13:
+  /@solid-primitives/rootless/1.2.6_solid-js@1.6.12:
+    resolution: {integrity: sha512-gcEF2JqdLDyKsfA7FWRZok1JkbKKjQesaRAj4odfkHTakEzU95YfBQxH9NHZ/ezP5WSR7m/xEh5eQjHs+7XPPA==}
+    peerDependencies:
+      solid-js: ^1.6.11
+    dependencies:
+      '@solid-primitives/utils': 5.4.0_solid-js@1.6.12
+      solid-js: 1.6.12
+    dev: false
+
+  /@solid-primitives/scroll/2.0.10_solid-js@1.6.12:
+    resolution: {integrity: sha512-osYuT7Ld3BxQA97DqXtUgwvOu23T37nnJRPKsfqMwvfk/b/JZbBA3mFlZ4euchLNFmOIFJCMS309JvAvWp78ig==}
+    peerDependencies:
+      solid-js: ^1.6.0
+    dependencies:
+      '@solid-primitives/event-listener': 2.2.8_solid-js@1.6.12
+      '@solid-primitives/rootless': 1.2.6_solid-js@1.6.12
+      '@solid-primitives/utils': 5.4.0_solid-js@1.6.12
+      solid-js: 1.6.12
+    dev: false
+
+  /@solid-primitives/utils/5.4.0_solid-js@1.6.12:
     resolution: {integrity: sha512-cSya9Tnh8KW6OYtJbZYs3//CVWWQAOXhMckH9paSzMQcoM09P+R1lLUN9BhQOws4c6PMA0apPNrbWsQzqZzIEw==}
     peerDependencies:
       solid-js: ^1.6.0
     dependencies:
-      solid-js: 1.6.13
+      solid-js: 1.6.12
     dev: false
 
   /@types/acorn/4.0.6:
@@ -1972,6 +2038,21 @@ packages:
     engines: {node: '>=0.8.x'}
     dev: false
 
+  /execa/5.1.1:
+    resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
+    engines: {node: '>=10'}
+    dependencies:
+      cross-spawn: 7.0.3
+      get-stream: 6.0.1
+      human-signals: 2.1.0
+      is-stream: 2.0.1
+      merge-stream: 2.0.0
+      npm-run-path: 4.0.1
+      onetime: 5.1.2
+      signal-exit: 3.0.7
+      strip-final-newline: 2.0.0
+    dev: false
+
   /execa/6.1.0:
     resolution: {integrity: sha512-QVWlX2e50heYJcCPG0iWtf8r0xjEYfz/OYLGDYH+IyjWezzPNxz63qNFOu0l4YftGWuizFVZHHs8PrLU5p2IDA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -2270,6 +2351,11 @@ packages:
       entities: 4.4.0
     dev: false
 
+  /human-signals/2.1.0:
+    resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
+    engines: {node: '>=10.17.0'}
+    dev: false
+
   /human-signals/3.0.1:
     resolution: {integrity: sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==}
     engines: {node: '>=12.20.0'}
@@ -2395,6 +2481,11 @@ packages:
       '@types/estree': 1.0.0
     dev: false
 
+  /is-stream/2.0.1:
+    resolution: {integrity: sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==}
+    engines: {node: '>=8'}
+    dev: false
+
   /is-stream/3.0.0:
     resolution: {integrity: sha512-LnQR4bZ9IADDRSkvpqMGvt/tEJWclzklNgSw48V5EAaAeDd6qGvN8ei6k5p0tvxSR171VmGyHuTiAOfxAbr8kA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -2473,6 +2564,10 @@ packages:
   /kleur/4.1.5:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
+    dev: false
+
+  /kolorist/1.7.0:
+    resolution: {integrity: sha512-ymToLHqL02udwVdbkowNpzjFd6UzozMtshPQKVi5k1EjKRqKqBrOnE9QbLEb0/pV76SAiIT13hdL8R6suc+f3g==}
     dev: false
 
   /lilconfig/2.1.0:
@@ -3181,6 +3276,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
+  /npm-run-path/4.0.1:
+    resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
+    engines: {node: '>=8'}
+    dependencies:
+      path-key: 3.1.1
+    dev: false
+
   /npm-run-path/5.1.0:
     resolution: {integrity: sha512-sJOdmRGrY2sjNTRMbSvluQqg+8X7ZK61yvzBEIDhz4f8z1TZFYABsqjjCBd/0PUNE9M6QDgHJXQkGUEm7Q+l9Q==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -3735,13 +3837,13 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /solid-js/1.6.13:
-    resolution: {integrity: sha512-/zcyeect3QnmcD58754IpOU/SzX3s9N19RlRVoKRz3tNpzvel7QKO4FX/PpIFQH6n/pxWq6rSh6b9fwe20XUvw==}
+  /solid-js/1.6.12:
+    resolution: {integrity: sha512-JFqRobfG3q5r1l4RYVOAukk6+FWtHpXGIjgh/GEsHKweN/kK+iHOtzUALE6+P5t/jIcSNeGiVitX8gmJg+cYvQ==}
     dependencies:
       csstype: 3.1.1
     dev: false
 
-  /solid-use/0.7.0_solid-js@1.6.13:
+  /solid-use/0.7.0_solid-js@1.6.12:
     resolution: {integrity: sha512-okMWy/dADFS8EqXr2Ckr2W1gEu1Rz7g+a204Hp4LWwrk6/BxB26WdEB4b4eyax5lq3XEoiaKNWxFepBBeeE8rw==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -3751,7 +3853,7 @@ packages:
       seroval:
         optional: true
     dependencies:
-      solid-js: 1.6.13
+      solid-js: 1.6.12
     dev: false
 
   /source-map-js/1.0.2:
@@ -3847,6 +3949,11 @@ packages:
   /strip-bom/4.0.0:
     resolution: {integrity: sha512-3xurFv5tEgii33Zi8Jtp55wEIILR9eh34FAW00PZf+JnSsTmV/ioewSgQl97JHvgjoRGwPShsWm+IdrxB35d0w==}
     engines: {node: '>=8'}
+    dev: false
+
+  /strip-final-newline/2.0.0:
+    resolution: {integrity: sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==}
+    engines: {node: '>=6'}
     dev: false
 
   /strip-final-newline/3.0.0:
@@ -4102,6 +4209,34 @@ packages:
       unplugin: 1.2.0
     transitivePeerDependencies:
       - rollup
+    dev: false
+
+  /unplugin-icons/0.15.3:
+    resolution: {integrity: sha512-YWgJqv5AahrokeOnta8uX/m1damZA6Rf6zPClgHg2Fa/45iyOe3Lj+Wn/Ba+CSsq9yBffn17YfKfJNyWCNZPvw==}
+    peerDependencies:
+      '@svgr/core': '>=5.5.0'
+      '@vue/compiler-sfc': ^3.0.2 || ^2.7.0
+      vue-template-compiler: ^2.6.12
+      vue-template-es2015-compiler: ^1.9.0
+    peerDependenciesMeta:
+      '@svgr/core':
+        optional: true
+      '@vue/compiler-sfc':
+        optional: true
+      vue-template-compiler:
+        optional: true
+      vue-template-es2015-compiler:
+        optional: true
+    dependencies:
+      '@antfu/install-pkg': 0.1.1
+      '@antfu/utils': 0.7.2
+      '@iconify/utils': 2.1.5
+      debug: 4.3.4
+      kolorist: 1.7.0
+      local-pkg: 0.4.3
+      unplugin: 1.2.0
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /unplugin/1.2.0:

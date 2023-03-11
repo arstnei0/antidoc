@@ -1,0 +1,13 @@
+---
+import { z } from "zod"
+import { header } from "./Header.css"
+
+const Props = z.object({})
+export type Props = z.input<typeof Props>
+
+const {} = Astro.props
+---
+
+<div class={header.item}>
+	<slot />
+</div>

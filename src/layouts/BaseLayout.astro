@@ -1,7 +1,9 @@
 ---
-import "~/style/global.css"
+import "~/style/base.css"
+import "~/style/typo.css"
 import { z } from "zod"
 import { config } from "config"
+import Header from "~/components/layout/header/Header.astro"
 
 const Props = z.object({
 	title: z.string().optional(),
@@ -19,11 +21,7 @@ const { title, lang } = Props.parse(Astro.props)
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>
-			{
-				title
-					? `${title}${config.titleSeparator}${config.title}`
-					: `${config.title}`
-			}
+			{title ? `${title}${config.titleSeparator}${config.title}` : `${config.title}`}
 		</title>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,8 +30,35 @@ const { title, lang } = Props.parse(Astro.props)
 			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
 			rel="stylesheet"
 		/>
+
+		<script is:inline>
+			const mode1 = localStorage.getItem("m")
+			if (!mode1) localStorage.setItem("m", "s")
+
+			const mode = mode1 ?? localStorage.getItem("m")
+			let modeClassName
+
+			if (mode === "s")
+				modeClassName =
+					globalThis.matchMedia &&
+					globalThis.matchMedia("(prefers-color-scheme: dark)").matches
+						? "d"
+						: "l"
+			else if (mode === "d") modeClassName = "d"
+			else modeClassName = "l"
+
+			modeClassName && document.documentElement.classList.add(modeClassName)
+
+			globalThis.m = mode
+
+			// is mobile
+			globalThis.isM = !!(
+				globalThis.matchMedia && globalThis.matchMedia(`(max-width: 700px)`).matches
+			)
+		</script>
 	</head>
 	<body>
+		<Header />
 		<slot />
 	</body>
 </html>

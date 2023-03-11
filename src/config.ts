@@ -3,4 +3,7 @@ export const config = {
 	favicon: "/favicon.svg",
 	title: "Antidoc",
 	titleSeparator: " 🚀 ",
+	links: {
+		github: "https://github.com/zihan-ch/antidoc",
+	},
 } as const
