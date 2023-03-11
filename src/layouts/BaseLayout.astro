@@ -1,0 +1,39 @@
+---
+import "~/style/global.css"
+import { z } from "zod"
+import { config } from "config"
+
+const Props = z.object({
+	title: z.string().optional(),
+	lang: z.string().default("en"),
+})
+export type Props = z.input<typeof Props>
+
+const { title, lang } = Props.parse(Astro.props)
+---
+
+<html lang={lang}>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href={config.favicon} />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>
+			{
+				title
+					? `${title}${config.titleSeparator}${config.title}`
+					: `${config.title}`
+			}
+		</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

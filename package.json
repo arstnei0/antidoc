@@ -1,15 +1,42 @@
 {
-  "name": "antidoc",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^2.0.18"
-  }
+	"name": "antidoc",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"postinstall": "astro sync & astro build",
+		"format": "prettier -w . --plugin-search-dir ."
+	},
+	"dependencies": {
+		"@astrojs/mdx": "^0.18.0",
+		"@astrojs/solid-js": "^2.1.0",
+		"@danielx/civet": "^0.5.85",
+		"@solid-primitives/props": "^3.1.2",
+		"@vanilla-extract/css": "^1.10.0",
+		"@vanilla-extract/recipes": "^0.3.0",
+		"@vanilla-extract/vite-plugin": "^3.8.0",
+		"add": "^2.0.6",
+		"astro": "^2.1.2",
+		"astro-auto-import": "^0.2.1",
+		"astro-vanilla-extract": "^2.0.0",
+		"esbuild-plugin": "link:@danielx/civet/esbuild-plugin",
+		"fs-extra": "^11.1.0",
+		"pnpm": "^7.29.1",
+		"prettier": "^2.8.4",
+		"sass": "^1.59.2",
+		"solid-js": "^1.6.13",
+		"solid-use": "^0.7.0",
+		"unplugin-auto-import": "^0.15.1",
+		"vite-plugin-civet": "^0.2.5",
+		"zod": "^3.21.4"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^11.0.1",
+		"@types/prettier": "^2.7.2",
+		"type-fest": "^3.6.1"
+	}
 }
