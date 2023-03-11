@@ -18,7 +18,7 @@ export const s = {
 			secondary: "1.1em",
 			primary: "1.25em",
 			important: "1.45em",
-			attention: "1.7em",
+			attention: "1.65em",
 		},
 		weight: {
 			normal: 400,

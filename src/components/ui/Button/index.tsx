@@ -11,9 +11,12 @@ const Button = (
 		}
 	>,
 ) => {
-	const [local, rest] = splitProps(props, ["type", "size"])
+	const [local, rest] = splitProps(props, ["type", "size", "round"])
 	return (
-		<button class={button({ type: local.type, size: local.size })} {...(rest as any)}>
+		<button
+			class={button({ type: local.type, size: local.size, round: local.round })}
+			{...(rest as any)}
+		>
 			{rest.children}
 		</button>
 	)

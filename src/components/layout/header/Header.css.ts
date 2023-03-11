@@ -28,7 +28,7 @@ export const header = {
 	wrapperFixed: style({}),
 
 	left: style([flex.center]),
-	right: style([flex.center]),
+	right: style([flex.center, { gap: ".6em" }]),
 
 	icon: style([hoverScale, { ":hover": { filter: "hue-rotate(90deg)" } }]),
 
@@ -38,6 +38,7 @@ export const header = {
 		position: "relative",
 		overflow: "hidden",
 		borderRadius,
+		fontSize: s.font.size.attention,
 		...hoverScale,
 	}),
 
@@ -82,10 +83,14 @@ const slideIn = keyframes({
 		left: "0%",
 	},
 })
+
 globalStyle(`${header.title}:hover::before`, {
 	opacity: 1,
 	animation: `6s linear 0s ${slideIn} infinite`,
 })
+
+globalStyle(`${header.wrapper} a`, { color: c.font.primary })
+globalStyle(`${header.wrapper} a:hover`, { color: c.bg.normal })
 
 globalStyle(`${header.wrapper}:not(${header.wrapperFixed})`, {
 	transform: "translateY(-100%)",

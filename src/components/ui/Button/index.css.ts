@@ -13,6 +13,7 @@ export const button = recipe({
 		},
 		":active": {
 			transform: "scale(1.3)",
+			filter: "brightness(.8)",
 		},
 		color: c.font.primary,
 		display: "flex",
@@ -69,10 +70,18 @@ export const button = recipe({
 				},
 			},
 		},
+		round: {
+			true: {
+				padding: ".4em",
+				borderRadius: "50%",
+			},
+			false: {},
+		},
 	},
 	defaultVariants: {
 		type: "normal",
 		size: "medium",
+		round: false,
 	},
 })
 export type ButtonRecipe = NonNullable<RecipeVariants<typeof button>>

@@ -35,7 +35,7 @@ export const toggleTheme = () => {
 export default () => {
 	return (
 		<>
-			<Button id="theme-toggle-button" onClick={toggleTheme}>
+			<Button id="theme-toggle-button" onClick={toggleTheme} round={true}>
 				<Show
 					when={mode() === "l"}
 					fallback={
