@@ -9,14 +9,23 @@ import autoImportVite from "unplugin-auto-import/vite"
 import icons from "unplugin-icons/vite"
 import { config } from "./src/config"
 
+// Remark Plugins
+import admonitions from "./plugins/admonitions"
+
 export default defineConfig({
+	markdown: {
+		shikiConfig: { theme: "dracula" },
+		remarkPlugins: [],
+	},
 	site: config.siteUrl,
 	integrations: [
 		autoImport({
 			imports: [{}],
 		}),
 		solid(),
-		mdx() as AstroIntegration,
+		mdx({
+			remarkPlugins: [[admonitions, {}]],
+		}) as AstroIntegration,
 		vanillaExtract(),
 	],
 	experimental: { assets: true },

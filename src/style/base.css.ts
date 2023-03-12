@@ -10,6 +10,9 @@ globalStyle("body", {
 	fontFamily: font.sans,
 	fontSize: "1.15rem",
 	margin: 0,
+	display: "flex",
+	flexDirection: "column",
+	position: "relative",
 })
 
 globalStyle("main", {

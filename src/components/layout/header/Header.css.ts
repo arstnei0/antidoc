@@ -1,18 +1,9 @@
 import { globalStyle, keyframes, style } from "@vanilla-extract/css"
-import {
-	borderRadius,
-	c,
-	combine,
-	flex,
-	hoverEffect,
-	hoverScale,
-	s,
-	transformScale,
-	transition,
-	transitionFn,
-} from "~/style/$.css"
+import { borderRadius, c, flex, hoverScale, s, transition } from "~/style/$.css"
 
+const height = "3.25em"
 export const header = {
+	height,
 	wrapper: style([
 		flex.between,
 		{
@@ -20,6 +11,8 @@ export const header = {
 			backgroundColor: c.bg.light,
 			position: "sticky",
 			top: 0,
+			height,
+			zIndex: 100,
 			":hover": {
 				boxShadow: `${c.bg.lighter} 0px 4px 12px;`,
 			},
@@ -93,5 +86,5 @@ globalStyle(`${header.wrapper} a`, { color: c.font.primary })
 globalStyle(`${header.wrapper} a:hover`, { color: c.bg.normal })
 
 globalStyle(`${header.wrapper}:not(${header.wrapperFixed})`, {
-	transform: "translateY(-100%)",
+	transform: "translate3d(0,calc(-100% - 2px),0)",
 })

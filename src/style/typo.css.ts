@@ -1,5 +1,14 @@
 import { globalStyle } from "@vanilla-extract/css"
-import { borderRadius, c, combine, hoverEffect, hoverEffectContent, transformScale } from "./$.css"
+import {
+	borderRadius,
+	c,
+	combine,
+	font,
+	hoverEffect,
+	hoverEffectContent,
+	s,
+	transformScale,
+} from "./$.css"
 
 const a = "a"
 
@@ -16,4 +25,14 @@ globalStyle(`${a}:hover`, {
 	backgroundColor: c.font.accent,
 	color: c.bg.normal,
 	...transformScale,
+})
+
+export const codeClass = ".astro-code"
+
+globalStyle(`.astro-code`, {
+	padding: s.padding.medium,
+	borderRadius,
+	fontFamily: font.mono,
+	overflowX: "scroll",
+	fontSize: "1em",
 })

@@ -18,7 +18,7 @@ const { headings, entry } = Astro.props
 	<div class={docLayout.wrapper}>
 		<LeftSidebar items={sidebar} />
 
-		<article>
+		<article class={docLayout.main}>
 			<slot />
 		</article>
 	</div>

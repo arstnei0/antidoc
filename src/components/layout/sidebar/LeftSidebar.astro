@@ -1,17 +1,55 @@
 ---
-import { SidebarItem } from "~/sidebar"
+import { SidebarItem, SidebarItemInput } from "~/sidebar"
 import { leftSidebar } from "./LeftSidebar.css"
-import LeftSidebarItem from "./LeftSidebarItem.astro"
+import LeftSidebarItem from "./LeftSidebarItem"
+import Logo from "~/components/Logo.astro"
+import { header } from "../header/Header.css"
+import { config } from "config"
+import { getCollection } from "astro:content"
 
 export interface Props {
-	items: SidebarItem[]
+	items: SidebarItemInput[]
 }
 
-const { items } = Astro.props
+const { items: itemsInput } = Astro.props
+
+const pages = await getCollection("docs")
+const getSidebarId = (file: string) => {
+	const $ = file.split("/")
+	$.pop()
+	return $
+}
+const getDocsUrl = (slug: string) => `/docs/${slug}`
+const items = itemsInput.map(item =>
+	item.isParent
+		? item.children === "auto"
+			? {
+					...item,
+					children: ($ => {
+						return $
+					})([
+						...pages
+							.filter(page => {
+								return getSidebarId(page.slug)[0] === item.id
+							})
+							.map(page => ({
+								id: page.slug,
+								title: page.data.title,
+								url: getDocsUrl(page.slug),
+							})),
+					]),
+			  }
+			: item
+		: item,
+) as SidebarItem[]
 ---
 
-<div class={leftSidebar.outer}>
-	<aside class={leftSidebar.wrapper}>
-		{items.map(item => <LeftSidebarItem item={item} />)}
-	</aside>
-</div>
+<aside class={leftSidebar.wrapper}>
+	<div class={leftSidebar.titleWrapper}>
+		<Logo class={header.icon} width="40" height="40" />
+		<h1 class={leftSidebar.title}>
+			<a href={config.siteUrl} class={header.titleLink}>{config.title}</a>
+		</h1>
+	</div>
+	{items.map(item => <LeftSidebarItem client:idle depth={0} item={item} now={false} />)}
+</aside>

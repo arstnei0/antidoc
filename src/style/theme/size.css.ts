@@ -15,10 +15,10 @@ export const s = {
 	// Font Size
 	font: {
 		size: {
-			secondary: "1.1em",
-			primary: "1.25em",
-			important: "1.45em",
-			attention: "1.65em",
+			secondary: "1em",
+			primary: "1.1em",
+			important: "1.3em",
+			attention: "1.5em",
 		},
 		weight: {
 			normal: 400,
