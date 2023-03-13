@@ -24,6 +24,7 @@ export const s = {
 			primary: "1.1em",
 			important: "1.3em",
 			attention: "1.5em",
+			h1: "2.5rem",
 		},
 		weight: {
 			normal: 400,

@@ -1,4 +1,4 @@
-import { SidebarItem } from "~/sidebar"
+import type { SidebarItem, Slug } from "~/sidebar"
 import { throttle } from "@solid-primitives/scheduled"
 import { leftSidebar } from "./LeftSidebar.css"
 import { getDocsUrl } from "~/lib/docs"
@@ -17,7 +17,8 @@ const ToggleButton = (props: { onClick?: any; open: boolean }) => {
 	)
 }
 
-const Self = (props: { item: SidebarItem; now: boolean; depth: number }) => {
+const Self = (props: { item: SidebarItem; now: boolean; depth: number; currentPageSlug: Slug }) => {
+	const isCurrent = createMemo(() => props.currentPageSlug === props.item.slug)
 	const childrenEl = atom(null as unknown as HTMLDivElement)
 	const height = atom(0)
 	const hidden = atom(false)
@@ -54,6 +55,7 @@ const Self = (props: { item: SidebarItem; now: boolean; depth: number }) => {
 					[leftSidebar.item.base]: true,
 					[leftSidebar.item.parent]: isParent(),
 					[leftSidebar.item.now]: props.now,
+					[leftSidebar.item.current]: isCurrent(),
 				}}
 			>
 				<div onClick={() => (location.href = url())} class={leftSidebar.item.left}>
@@ -87,7 +89,14 @@ const Self = (props: { item: SidebarItem; now: boolean; depth: number }) => {
 					}}
 				>
 					<For each={(props.item as any).children as SidebarItem[]}>
-						{child => <Self item={child} now={props.now} depth={props.depth + 1} />}
+						{child => (
+							<Self
+								currentPageSlug={props.currentPageSlug}
+								item={child}
+								now={props.now}
+								depth={props.depth + 1}
+							/>
+						)}
 					</For>
 				</div>
 			</Show>

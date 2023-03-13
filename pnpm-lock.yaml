@@ -21,13 +21,15 @@ specifiers:
   astro: ^2.1.2
   astro-auto-import: ^0.2.1
   astro-vanilla-extract: ^2.0.0
+  chroma-js: ^2.4.2
   esbuild-plugin: link:@danielx/civet/esbuild-plugin
   fs-extra: ^11.1.0
   hast: ^1.0.0
   hast-util-from-html: ^1.0.1
   hastscript: ^7.2.0
+  html-escaper: ^3.0.3
   mdast: ^3.0.0
-  pnpm: ^7.29.1
+  parse-numeric-range: ^1.3.0
   prettier: ^2.8.4
   rehype-slug: ^5.1.0
   remark: ^14.0.2
@@ -41,6 +43,7 @@ specifiers:
   unist-util-visit: ^4.1.2
   unplugin-auto-import: ^0.15.1
   unplugin-icons: ^0.15.3
+  vfile: ^5.3.7
   vite-plugin-civet: ^0.2.5
   zod: ^3.21.4
 
@@ -61,13 +64,15 @@ dependencies:
   astro: 2.1.2_sass@1.59.2
   astro-auto-import: 0.2.1_astro@2.1.2
   astro-vanilla-extract: 2.0.0_astro@2.1.2+sass@1.59.2
+  chroma-js: 2.4.2
   esbuild-plugin: link:@danielx/civet/esbuild-plugin
   fs-extra: 11.1.0
   hast: 1.0.0
   hast-util-from-html: 1.0.1
   hastscript: 7.2.0
+  html-escaper: 3.0.3
   mdast: 3.0.0
-  pnpm: 7.29.1
+  parse-numeric-range: 1.3.0
   prettier: 2.8.4
   rehype-slug: 5.1.0
   remark: 14.0.2
@@ -80,6 +85,7 @@ dependencies:
   unist-util-visit: 4.1.2
   unplugin-auto-import: 0.15.1
   unplugin-icons: 0.15.3
+  vfile: 5.3.7
   vite-plugin-civet: 0.2.5_sass@1.59.2
   zod: 3.21.4
 
@@ -1705,6 +1711,10 @@ packages:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: false
+
+  /chroma-js/2.4.2:
+    resolution: {integrity: sha512-U9eDw6+wt7V8z5NncY2jJfZa+hUH8XEj8FQHgFJTrUFnJfXYf4Ml4adI2vXZOjqRDpFWtYVWypDfZwnJ+HIR4A==}
     dev: false
 
   /ci-info/3.8.0:
@@ -3497,6 +3507,10 @@ packages:
       unist-util-visit-children: 2.0.2
     dev: false
 
+  /parse-numeric-range/1.3.0:
+    resolution: {integrity: sha512-twN+njEipszzlMJd4ONUYgSfZPDxgHhT9Ahed5uTigpQn90FggW4SA/AIPq/6a149fTbE9qBEcSwE3FAEp6wQQ==}
+    dev: false
+
   /parse5-htmlparser2-tree-adapter/7.0.0:
     resolution: {integrity: sha512-B77tOZrqqfUfnVcOrUvfdLbz4pu4RopLD/4vmu3HUPswwTA8OH0EMW9BlWR2B0RCoiZRAHEUu7IxeP1Pd1UU+g==}
     dependencies:
@@ -3576,12 +3590,6 @@ packages:
       jsonc-parser: 3.2.0
       mlly: 1.2.0
       pathe: 1.1.0
-    dev: false
-
-  /pnpm/7.29.1:
-    resolution: {integrity: sha512-dn+65B2XpMIin7sQZvBIJ2Zyx8Z7LK95qyAvgEPE8qXkWYL/LuwpfMfK9Muc7+zNnpPwiQgtGEsxgOtuabFibQ==}
-    engines: {node: '>=14.6'}
-    hasBin: true
     dev: false
 
   /postcss-load-config/3.1.4_postcss@8.4.21:

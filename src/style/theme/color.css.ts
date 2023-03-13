@@ -11,6 +11,7 @@ export const c = createGlobalTheme(".d", {
 	},
 	font: {
 		primary: "#EEEEEE",
+		secondary: "#E0E0E0",
 		accent: "#A6E3E9",
 	},
 	primary: "#609966",
@@ -27,6 +28,7 @@ createGlobalTheme(".l", c, {
 	},
 	font: {
 		primary: "#272727",
+		secondary: "#292929",
 		accent: "#7286D3",
 	},
 	primary: "#609966",

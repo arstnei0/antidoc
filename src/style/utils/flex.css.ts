@@ -1,4 +1,4 @@
-import { StyleRule } from "@vanilla-extract/css"
+import { StyleRule, style } from "@vanilla-extract/css"
 
 export const flexBare = { display: "flex" } satisfies StyleRule
 export const flexBase = { ...flexBare, alignItems: "center" } satisfies StyleRule

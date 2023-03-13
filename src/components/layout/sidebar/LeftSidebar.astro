@@ -1,5 +1,5 @@
 ---
-import { SidebarItem } from "~/sidebar"
+import { SidebarItem, Slug } from "~/sidebar"
 import { leftSidebar } from "./LeftSidebar.css"
 import LeftSidebarItem from "./LeftSidebarItem"
 import Logo from "~/components/Logo.astro"
@@ -9,9 +9,10 @@ import { getCollection } from "astro:content"
 
 export interface Props {
 	items: SidebarItem[]
+	currentPageSlug: Slug
 }
 
-const { items } = Astro.props
+const { items, currentPageSlug } = Astro.props
 ---
 
 <aside class={leftSidebar.wrapper}>
@@ -21,5 +22,15 @@ const { items } = Astro.props
 			<a href={config.siteUrl} class={header.titleLink}>{config.title}</a>
 		</h1>
 	</div>
-	{items.map(item => <LeftSidebarItem client:idle depth={0} item={item} now={false} />)}
+	{
+		items.map(item => (
+			<LeftSidebarItem
+				currentPageSlug={currentPageSlug}
+				client:idle
+				depth={0}
+				item={item}
+				now={false}
+			/>
+		))
+	}
 </aside>

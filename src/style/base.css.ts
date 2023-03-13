@@ -26,3 +26,6 @@ globalStyle("*", {
 	transition,
 	boxSizing: "border-box",
 })
+
+globalStyle(".center", { ...flex.center })
+globalStyle(".text-center", { textAlign: "center" })

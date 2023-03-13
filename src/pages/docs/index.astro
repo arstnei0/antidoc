@@ -1,0 +1,14 @@
+---
+import { getEntryBySlug } from "astro:content"
+import { config } from "~/config"
+import DocLayout from "~/layouts/DocLayout.astro"
+
+const slug = config.docs.index
+
+const entry = await getEntryBySlug("docs", slug)
+if (!entry) return
+
+const { Content, headings, remarkPluginFrontmatter } = await entry?.render()
+---
+
+<DocLayout slug={slug} entry={entry} headings={headings}><Content /></DocLayout>

@@ -4,8 +4,9 @@ import { GetStaticPaths } from "astro"
 import { getCollection, getEntryBySlug } from "astro:content"
 import DocLayout from "~/layouts/DocLayout.astro"
 
-export const getStaticPaths: GetStaticPaths = async () =>
-	(await getCollection("docs")).map(page => ({ params: { slug: page.slug } }))
+export const getStaticPaths: GetStaticPaths = async () => [
+	...(await getCollection("docs")).map(page => ({ params: { slug: page.slug } })),
+]
 
 const { slug } = Astro.params
 const entry = await getEntryBySlug("docs", slug as any)
@@ -14,4 +15,4 @@ if (!entry) return
 const { Content, headings, remarkPluginFrontmatter } = await entry?.render()
 ---
 
-<DocLayout entry={entry} headings={headings}><Content /></DocLayout>
+<DocLayout slug={slug as any} entry={entry} headings={headings}><Content /></DocLayout>

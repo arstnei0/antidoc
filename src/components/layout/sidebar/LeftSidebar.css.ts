@@ -93,6 +93,10 @@ export const leftSidebar = {
 				...transformScale,
 			},
 		}),
+		current: style({
+			color: c.font.accent,
+			backgroundColor: c.bg.light,
+		}),
 	},
 }
 

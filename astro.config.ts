@@ -12,22 +12,21 @@ import { config } from "./src/config"
 // Remark and Rehype Plugins
 import { remarkPlugins } from "./src/plugins/remark"
 import { rehypePlugins } from "./src/plugins/rehype"
+import { codeSnippetAutoImport } from "./src/plugins/remark/codeSnippet"
 
 export default defineConfig({
 	markdown: {
 		shikiConfig: { theme: "dracula" },
-		remarkPlugins: [],
+		remarkPlugins,
+		rehypePlugins,
 	},
 	site: config.siteUrl,
 	integrations: [
 		autoImport({
-			imports: [{}],
+			imports: [codeSnippetAutoImport],
 		}),
 		solid(),
-		mdx({
-			remarkPlugins,
-			rehypePlugins,
-		}) as AstroIntegration,
+		mdx({}) as AstroIntegration,
 		vanillaExtract(),
 	],
 	experimental: { assets: true },

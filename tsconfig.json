@@ -18,6 +18,10 @@
 			"config": ["./src/config"],
 			"style": ["./src/style/$.css"],
 			"solid": ["./src/lib/solid"]
-		}
-	}
+		},
+		"types": [],
+		"incremental": true
+	},
+	"include": ["src"],
+	"exclude": ["**/node_modules"]
 }

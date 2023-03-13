@@ -44,3 +44,7 @@ globalStyle(`.astro-code *`, {
 	fontSize: s.font.size.secondary,
 	tabSize: "1.7em",
 })
+
+globalStyle(`h1, h2, h3, h4, h5, h6`, { fontWeight: s.font.weight.head })
+globalStyle(`h1`, { fontSize: s.font.size.h1 })
+// globalStyle(`h1`, { fontSize: s.font.size.h1 })

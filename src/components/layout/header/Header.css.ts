@@ -1,5 +1,5 @@
 import { globalStyle, keyframes, style } from "@vanilla-extract/css"
-import { borderRadius, c, flex, hoverScale, s, transition } from "~/style/$.css"
+import { borderRadius, c, flex, hoverScale, s, scale, transition } from "~/style/$.css"
 
 const height = "3.25em"
 export const header = {
@@ -13,9 +13,7 @@ export const header = {
 			top: 0,
 			height,
 			zIndex: 100,
-			":hover": {
-				boxShadow: `${c.bg.lighter} 0px 4px 12px;`,
-			},
+			":hover": { boxShadow: `${c.bg.lighter} 0px 4px 12px;` },
 		},
 	]),
 	wrapperFixed: style({}),
@@ -32,11 +30,12 @@ export const header = {
 		overflow: "hidden",
 		borderRadius,
 		fontSize: s.font.size.attention,
-		...hoverScale,
+		":hover": {
+			transform: scale,
+		},
 	}),
 
 	titleLink: style([
-		hoverScale,
 		{
 			display: "inline-block",
 			borderRadius,
@@ -44,14 +43,30 @@ export const header = {
 			color: c.font.primary,
 			textDecoration: "none",
 			":hover": {
-				backgroundColor: "transparent",
+				// backgroundColor: "transparent",
+				transform: scale,
 				color: c.font.primary,
+				// display: "none",
 			},
 		},
 	]),
 
 	item: style({}),
 }
+
+globalStyle(`${header.item} a`, {})
+globalStyle(`${header.item} a:hover`, {})
+globalStyle(`${header.item} h2`, {
+	fontWeight: s.font.weight.important,
+	fontSize: s.font.size.important,
+	padding: s.padding.small,
+	borderRadius,
+})
+globalStyle(`${header.item} h2:hover`, {
+	color: c.bg.normal,
+	backgroundColor: c.font.secondary,
+	transform: "none",
+})
 
 globalStyle(`${header.title}::before`, {
 	content: "",
@@ -61,7 +76,7 @@ globalStyle(`${header.title}::before`, {
 	left: "-200%",
 	borderRadius,
 	background: `linear-gradient(to right, #ff1b6b, #45caff)`,
-	zIndex: -10,
+	zIndex: -100,
 	opacity: 0,
 	transition,
 })

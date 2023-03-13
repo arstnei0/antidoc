@@ -2,10 +2,12 @@
 import { z } from "zod"
 import { header } from "./Header.css"
 
-const Props = z.object({})
+const Props = z.object({
+	right: z.boolean().default(false),
+})
 export type Props = z.input<typeof Props>
 
-const {} = Astro.props
+const { right } = Astro.props
 ---
 
 <div class={header.item}>
