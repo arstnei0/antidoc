@@ -9,8 +9,9 @@ import autoImportVite from "unplugin-auto-import/vite"
 import icons from "unplugin-icons/vite"
 import { config } from "./src/config"
 
-// Remark Plugins
-import admonitions from "./plugins/admonitions"
+// Remark and Rehype Plugins
+import { remarkPlugins } from "./src/plugins/remark"
+import { rehypePlugins } from "./src/plugins/rehype"
 
 export default defineConfig({
 	markdown: {
@@ -24,7 +25,8 @@ export default defineConfig({
 		}),
 		solid(),
 		mdx({
-			remarkPlugins: [[admonitions, {}]],
+			remarkPlugins,
+			rehypePlugins,
 		}) as AstroIntegration,
 		vanillaExtract(),
 	],

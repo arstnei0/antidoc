@@ -19,6 +19,7 @@ globalStyle("main", {
 	...flex.bare,
 	flexDirection: "column",
 	minHeight: "100%",
+	minWidth: "100%",
 })
 
 globalStyle("*", {

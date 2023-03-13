@@ -1,14 +1,22 @@
-export const sidebar: SidebarItemInput[] = [
-	{ id: "markdown", title: "Markdown", isParent: true, children: "auto" },
+export const sidebar: SidebarItem[] = [
+	{ slug: "get-started", title: "Get Started" },
+	{
+		slug: "markdown",
+		title: "Markdown",
+		children: [
+			{ slug: "markdown/features", title: "Markdown Features" },
+			{
+				slug: "markdown/code-blocks",
+				title: "Code Blocks",
+			},
+		],
+	},
 ]
 
-export type SidebarItemInput = {
-	id: string
-	title: string
-} & ({ isParent: true; children: SidebarItem[] | "auto" } | { isParent: false })
+import type { CollectionEntry } from "astro:content"
 
-export type SidebarItem = {
-	id: string
-	title: string
-	url: string
-} & ({ isParent: true; children: SidebarItem[] } | { isParent: false })
+export type Slug = CollectionEntry<"docs">["slug"]
+export type SidebarItem = { title: string } & (
+	| { slug: string; children: SidebarItem[] }
+	| { slug: Slug; children?: void }
+)

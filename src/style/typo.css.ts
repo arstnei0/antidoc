@@ -9,6 +9,7 @@ import {
 	s,
 	transformScale,
 } from "./$.css"
+import "./directive.css"
 
 const a = "a"
 
@@ -29,10 +30,17 @@ globalStyle(`${a}:hover`, {
 
 export const codeClass = ".astro-code"
 
+globalStyle("p", {
+	fontSize: s.font.size.primary,
+})
+
 globalStyle(`.astro-code`, {
 	padding: s.padding.medium,
 	borderRadius,
 	fontFamily: font.mono,
 	overflowX: "scroll",
-	fontSize: "1em",
+})
+globalStyle(`.astro-code *`, {
+	fontSize: s.font.size.secondary,
+	tabSize: "1.7em",
 })
