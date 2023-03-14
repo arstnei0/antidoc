@@ -16,7 +16,7 @@ import { codeSnippetAutoImport } from "./src/plugins/remark/codeSnippet"
 
 export default defineConfig({
 	markdown: {
-		shikiConfig: { theme: "dracula" },
+		shikiConfig: { theme: "material-ocean" },
 		remarkPlugins,
 		rehypePlugins,
 	},

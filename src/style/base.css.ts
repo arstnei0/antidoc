@@ -29,3 +29,28 @@ globalStyle("*", {
 
 globalStyle(".center", { ...flex.center })
 globalStyle(".text-center", { textAlign: "center" })
+
+// Scrollbar
+globalStyle("body", {
+	scrollbarColor: "var(--sb-thumb-color) var(--sb-track-color)",
+	vars: {
+		"--sb-track-color": c.bg.light,
+		"--sb-thumb-color": c.bg.lighterer,
+		"--sb-thumb-color-hover": c.bg.lightest,
+		"--sb-size": "9px",
+	},
+})
+globalStyle("body::-webkit-scrollbar", {
+	width: "var(--sb-size)",
+})
+globalStyle("body::-webkit-scrollbar-thumb", {
+	background: "var(--sb-thumb-color)",
+	borderRadius: "3px",
+})
+globalStyle("body::-webkit-scrollbar-thumb:hover", {
+	background: "var(--sb-thumb-color-hover)",
+})
+globalStyle("body::-webkit-scrollbar-track", {
+	background: "var(--sb-track-color)",
+	borderRadius: "3px",
+})

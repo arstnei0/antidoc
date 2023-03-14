@@ -15,6 +15,11 @@ export const c = createGlobalTheme(".d", {
 		accent: "#A6E3E9",
 	},
 	primary: "#609966",
+	code: {
+		ins: { bg: "#60996666", mark: "#9DC08B" },
+		del: { bg: "#CD0404", mark: "#F48484" },
+		bg: "#1a1a1a",
+	},
 })
 
 // Light theme
@@ -32,4 +37,9 @@ createGlobalTheme(".l", c, {
 		accent: "#7286D3",
 	},
 	primary: "#609966",
+	code: {
+		ins: { bg: "#60996666", mark: "#609966" },
+		del: { bg: "#F55050", mark: "#F48484" },
+		bg: "#1a1a1a",
+	},
 })

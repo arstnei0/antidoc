@@ -1,12 +1,14 @@
 export const s = {
 	// Border Radius
 	br: {
+		small: "4px",
 		normal: "8px",
 		large: "16px",
 	},
 
 	// Spacing
 	padding: {
+		tiny: "2px 5px",
 		small: "5px 15px",
 		medium: "9px 27px",
 		large: "11px 32px",
@@ -21,7 +23,7 @@ export const s = {
 	font: {
 		size: {
 			secondary: ".95em",
-			primary: "1.1em",
+			primary: "1.05em",
 			important: "1.3em",
 			attention: "1.5em",
 			h1: "2.5rem",

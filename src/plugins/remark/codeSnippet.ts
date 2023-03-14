@@ -330,6 +330,7 @@ export const remarkCodeSnippet = (): Plugin<[], Root> => {
 				removedLineCount,
 				lineMarkings: encodeMarkdownStringArrayProp(lineMarkings),
 				inlineMarkings: encodeMarkdownStringArrayProp(inlineMarkings),
+				code: code.value,
 			}
 
 			const codeSnippetWrapper = makeComponentNode(
