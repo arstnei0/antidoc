@@ -23,7 +23,6 @@ specifiers:
   astro-compress: ^1.1.35
   astro-vanilla-extract: ^2.0.0
   chroma-js: ^2.4.2
-  esbuild-plugin: link:@danielx/civet/esbuild-plugin
   fs-extra: ^11.1.0
   hast: ^1.0.0
   hast-util-from-html: ^1.0.1
@@ -67,7 +66,6 @@ dependencies:
   astro-compress: 1.1.35
   astro-vanilla-extract: 2.0.0_astro@2.1.3+sass@1.59.2
   chroma-js: 2.4.2
-  esbuild-plugin: link:@danielx/civet/esbuild-plugin
   fs-extra: 11.1.0
   hast: 1.0.0
   hast-util-from-html: 1.0.1

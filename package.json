@@ -30,7 +30,6 @@
 		"astro-compress": "^1.1.35",
 		"astro-vanilla-extract": "^2.0.0",
 		"chroma-js": "^2.4.2",
-		"esbuild-plugin": "link:@danielx/civet/esbuild-plugin",
 		"fs-extra": "^11.1.0",
 		"hast": "^1.0.0",
 		"hast-util-from-html": "^1.0.1",
