@@ -1,14 +1,11 @@
 ---
-import { z } from "astro:content"
+export interface Props {
+	width?: string
+	height?: string
+	class?: string
+}
 
-const Props = z.object({
-	width: z.coerce.string().default("30px"),
-	height: z.coerce.string().default("30px"),
-	class: z.string().optional(),
-})
-export type Props = z.input<typeof Props>
-
-const { width, height, class: className } = Props.parse(Astro.props)
+const { width = "30px", height = "30px", class: className } = Astro.props
 ---
 
 <svg

@@ -1,5 +1,5 @@
 import { CombineProps, JSX, splitProps } from "solid"
-import { ButtonRecipe, button, pointer, pointerWrapper } from "./index.css"
+import { ButtonRecipe, button, pointer, pointerWrapper, buttonBase } from "./index.css"
 
 const Button = (
 	props: CombineProps<
@@ -14,7 +14,11 @@ const Button = (
 	const [local, rest] = splitProps(props, ["type", "size", "round"])
 	return (
 		<button
-			class={button({ type: local.type, size: local.size, round: local.round })}
+			class={`${buttonBase} ${button({
+				type: local.type,
+				size: local.size,
+				round: local.round,
+			})}`}
 			{...(rest as any)}
 		>
 			{rest.children}

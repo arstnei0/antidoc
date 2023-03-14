@@ -1,13 +1,11 @@
 ---
-import { z } from "zod"
 import { header } from "./Header.css"
 
-const Props = z.object({
-	right: z.boolean().default(false),
-})
-export type Props = z.input<typeof Props>
+export interface Props {
+	right?: boolean
+}
 
-const { right } = Astro.props
+const { right = false } = Astro.props
 ---
 
 <div class={header.item}>

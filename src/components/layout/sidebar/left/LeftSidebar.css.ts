@@ -10,7 +10,7 @@ import {
 	transition,
 	transitionFn,
 } from "style"
-import { header } from "../header/Header.css"
+import { header } from "../../header/Header.css"
 
 const width = "17em"
 const transitionDuration = 400
@@ -39,6 +39,7 @@ export const leftSidebar = {
 		margin: 0,
 		flexGrow: "1",
 		textAlign: "center",
+		fontSize: "1.5em",
 	}),
 
 	item: {
@@ -88,10 +89,15 @@ export const leftSidebar = {
 			width: "3.5em",
 			height: "3.5em",
 			":hover": {
-				// backgroundColor: c.bg.lighter,
 				filter: "brightness(1.1)",
-				...transformScale,
+				transform: "scale(1.3)",
 			},
+			":active": { transform: "scale(1.4)" },
+		}),
+		toggleButtonOpen: style({
+			transform: "rotate(90deg)",
+			":hover": { transform: "rotate(90deg) scale(1.3)" },
+			":active": { transform: "rotate(90deg) scale(1.4)" },
 		}),
 		current: style({
 			color: c.font.accent,

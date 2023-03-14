@@ -3,7 +3,7 @@ import { SidebarItem, Slug } from "~/sidebar"
 import { leftSidebar } from "./LeftSidebar.css"
 import LeftSidebarItem from "./LeftSidebarItem"
 import Logo from "~/components/Logo.astro"
-import { header } from "../header/Header.css"
+import { header } from "../../header/Header.css"
 import { config } from "config"
 import { getCollection } from "astro:content"
 
@@ -23,7 +23,7 @@ const { items, currentPageSlug } = Astro.props
 		</h1>
 	</div>
 	{
-		items.map(item => (
+		items.map((item) => (
 			<LeftSidebarItem
 				currentPageSlug={currentPageSlug}
 				client:idle

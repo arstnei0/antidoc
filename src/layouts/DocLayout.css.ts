@@ -1,6 +1,5 @@
 import { flex, globalStyle, style } from "style"
 import { header } from "~/components/layout/header/Header.css"
-import { leftSidebar } from "~/components/layout/sidebar/LeftSidebar.css"
 
 export const docLayout = {
 	wrapper: style({
@@ -11,10 +10,26 @@ export const docLayout = {
 		top: 0,
 	}),
 
-	main: style({
-		marginLeft: `2em`,
-		marginTop: `calc(${header.height} + .1em)`,
-	}),
+	right: {
+		wrapper: style({
+			...flex.bare,
+			flexWrap: "wrap",
+			marginTop: `calc(${header.height} + .1em)`,
+			width: "100%",
+			marginLeft: `2em`,
+		}),
+		first: style({
+			maxWidth: "75%",
+			width: "100%",
+			flex: "1 0",
+		}),
+		second: style({
+			flex: "0 0 25%",
+			width: "100%",
+		}),
+	},
+
+	main: style({}),
 }
 
 globalStyle(`main`, {

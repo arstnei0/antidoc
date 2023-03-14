@@ -25,7 +25,7 @@ export const header = {
 
 	title: style({
 		margin: "0px .3em",
-		fontWeight: s.font.weight.head,
+		fontWeight: s.font.weight.heading,
 		position: "relative",
 		overflow: "hidden",
 		borderRadius,
@@ -97,7 +97,15 @@ globalStyle(`${header.title}:hover::before`, {
 	animation: `6s linear 0s ${slideIn} infinite`,
 })
 
-globalStyle(`${header.wrapper} a`, { color: c.font.primary })
+globalStyle(`${header.wrapper} a`, {
+	color: c.font.primary,
+	backgroundColor: "inherit",
+	padding: "none",
+	margin: "inherit",
+	gap: "inherit",
+	borderRadius: "inherit",
+	fontSize: "inherit",
+})
 globalStyle(`${header.wrapper} a:hover`, { color: c.bg.normal })
 
 globalStyle(`${header.wrapper}:not(${header.wrapperFixed})`, {

@@ -10,25 +10,25 @@ import {
 	StyleRule,
 } from "style"
 
-export const button = recipe({
-	base: {
-		all: "unset",
-		cursor: "pointer",
-		borderRadius,
-		boxSizing: "border-box",
-		transition,
-		fontWeight: s.font.weight.important,
-		":hover": {
-			transform: "scale(1.1)",
-		},
-		":active": {
-			transform: "scale(1.3)",
-			filter: "brightness(.8)",
-		},
-		color: c.font.primary,
-		display: "flex",
-		alignItems: "center",
+export const buttonBase = style({
+	all: "unset",
+	cursor: "pointer",
+	borderRadius,
+	boxSizing: "border-box",
+	transition,
+	fontWeight: s.font.weight.important,
+	":hover": {
+		transform: "scale(1.1)",
 	},
+	":active": {
+		transform: "scale(1.3)",
+		filter: "brightness(.8)",
+	},
+	color: c.font.primary,
+	display: "flex",
+	alignItems: "center",
+})
+export const button = recipe({
 	variants: {
 		size: {
 			medium: {
@@ -114,11 +114,11 @@ export const pointer = style({
 	transition: ".3s",
 })
 
-globalStyle(`${button}:not(:hover) ${pointer}`, {
+globalStyle(`${buttonBase}:not(:hover) ${pointer}`, {
 	background: c.bg.light,
 })
 
-globalStyle(`${button} ${pointer}::before`, {
+globalStyle(`${buttonBase} ${pointer}::before`, {
 	content: "",
 	boxSizing: "border-box",
 	borderColor: c.font.primary,
@@ -134,11 +134,11 @@ globalStyle(`${button} ${pointer}::before`, {
 	transform: "rotate(-45deg)",
 })
 
-globalStyle(`${button}:hover ${pointer}`, {
+globalStyle(`${buttonBase}:hover ${pointer}`, {
 	transform: "scale(1.5)",
 })
 
-globalStyle(`${button}:hover ${pointer}::before`, {
+globalStyle(`${buttonBase}:hover ${pointer}::before`, {
 	borderColor: c.bg.normal,
 	right: "0",
 })
@@ -152,8 +152,8 @@ const buttonA = {
 	borderRadius: "inherit",
 	fontSize: "inherit",
 } satisfies StyleRule
-globalStyle(`${button} a`, buttonA)
-globalStyle(`${button} a::before`, {
+globalStyle(`${buttonBase} a`, buttonA)
+globalStyle(`${buttonBase} a::before`, {
 	display: "none",
 })
-globalStyle(`${button} a:hover`, buttonA)
+globalStyle(`${buttonBase} a:hover`, buttonA)

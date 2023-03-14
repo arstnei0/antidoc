@@ -1,0 +1,14 @@
+---
+import { MarkdownHeading } from "astro"
+import * as css from "./RightSidebar.css"
+import RightSidebarItem from "./RightSidebarItem"
+import RightSidebarItems from "./RightSidebarItems"
+
+export interface Props {
+	headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props
+---
+
+<RightSidebarItems headings={headings} client:idle />

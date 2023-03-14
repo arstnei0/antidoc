@@ -4,15 +4,13 @@ import "~/style/typo.css"
 import { z } from "zod"
 import { config } from "config"
 import Header from "~/components/layout/header/Header.astro"
+export interface Props {
+	title?: string
+	lang?: string
+	mainClass?: string
+}
 
-const Props = z.object({
-	title: z.string().optional(),
-	lang: z.string().default("en"),
-	mainClass: z.string().optional(),
-})
-export type Props = z.input<typeof Props>
-
-const { title, lang, mainClass } = Props.parse(Astro.props)
+const { title, lang = "en", mainClass } = Astro.props
 ---
 
 <html lang={lang}>

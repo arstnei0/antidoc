@@ -2,7 +2,77 @@
 title: Code Blocks
 ---
 
-Hello this font size
+```ts title="config.ts" ins={1}
+import { defineCollection, z } from "astro:content"
+
+const docs = defineCollection({
+	schema: z.object({
+		title: z.string(),
+	}),
+})
+
+export default { docs }
+```
+
+```ts title="config.ts" {1-3}
+import { defineCollection, z } from "astro:content"
+
+const docs = defineCollection({
+	schema: z.object({
+		title: z.string(),
+	}),
+})
+
+export default { docs }
+```
+
+```ts title="config.ts" "z"
+import { defineCollection, z } from "astro:content"
+
+const docs = defineCollection({
+	schema: z.object({
+		title: z.string(),
+	}),
+})
+
+export default { docs }
+```
+
+```ts title="config.ts" del={1}
+import { defineCollection, z } from "astro:content"
+
+const docs = defineCollection({
+	schema: z.object({
+		title: z.string(),
+	}),
+})
+
+export default { docs }
+```
+
+```ts title="config.ts" ins="defineCollection"
+import { defineCollection, z } from "astro:content"
+
+const docs = defineCollection({
+	schema: z.object({
+		title: z.string(),
+	}),
+})
+
+export default { docs }
+```
+
+```ts title="config.ts" del="defineCollection"
+import { defineCollection, z } from "astro:content"
+
+const docs = defineCollection({
+	schema: z.object({
+		title: z.string(),
+	}),
+})
+
+export default { docs }
+```
 
 ```ts title="hello.ts"
 import {

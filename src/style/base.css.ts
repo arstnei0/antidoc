@@ -25,6 +25,7 @@ globalStyle("main", {
 globalStyle("*", {
 	transition,
 	boxSizing: "border-box",
+	scrollBehavior: "smooth",
 })
 
 globalStyle(".center", { ...flex.center })

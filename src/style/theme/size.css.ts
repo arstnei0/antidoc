@@ -31,7 +31,8 @@ export const s = {
 		weight: {
 			normal: 400,
 			important: 500,
-			head: 700,
+			heading: 600,
+			title: 700,
 		},
 	},
 } as const

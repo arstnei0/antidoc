@@ -2,9 +2,10 @@
 import { MarkdownHeading } from "astro"
 import { CollectionEntry } from "astro:content"
 import BaseLayout from "./BaseLayout.astro"
-import LeftSidebar from "~/components/layout/sidebar/LeftSidebar.astro"
+import LeftSidebar from "~/components/layout/sidebar/left/LeftSidebar.astro"
 import { Slug, sidebar } from "config"
 import { docLayout } from "./DocLayout.css"
+import RightSidebar from "~/components/layout/sidebar/right/RightSidebar.astro"
 
 export interface Props {
 	entry: CollectionEntry<"docs">
@@ -19,9 +20,15 @@ const { headings, entry, slug } = Astro.props
 	<div class={docLayout.wrapper}>
 		<LeftSidebar currentPageSlug={slug} items={sidebar} />
 
-		<article class={docLayout.main}>
-			<slot />
-		</article>
+		<div class={docLayout.right.wrapper}>
+			<div class={docLayout.right.first}>
+				<article class={docLayout.main}><slot /></article>
+			</div>
+
+			<div class={docLayout.right.second}>
+				<RightSidebar headings={headings} />
+			</div>
+		</div>
 	</div>
 </BaseLayout>
 

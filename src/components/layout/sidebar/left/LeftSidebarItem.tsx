@@ -8,7 +8,7 @@ const ToggleButton = (props: { onClick?: any; open: boolean }) => {
 	return (
 		<button
 			class={leftSidebar.item.toggleButton}
-			style={props.open ? `` : "transform: rotate(90deg);"}
+			classList={{ [leftSidebar.item.toggleButtonOpen]: !props.open }}
 			onClick={() => props.onClick?.()}
 		>
 			{/* prettier-ignore */}
@@ -67,7 +67,7 @@ const Self = (props: { item: SidebarItem; now: boolean; depth: number; currentPa
 			</div>
 			<Show when={isParent()}>
 				<div
-					ref={el => childrenEl(el)}
+					ref={(el) => childrenEl(el)}
 					class={leftSidebar.item.children}
 					classList={{
 						[leftSidebar.item.hidden]: hidden(),
@@ -89,7 +89,7 @@ const Self = (props: { item: SidebarItem; now: boolean; depth: number; currentPa
 					}}
 				>
 					<For each={(props.item as any).children as SidebarItem[]}>
-						{child => (
+						{(child) => (
 							<Self
 								currentPageSlug={props.currentPageSlug}
 								item={child}
