@@ -8,7 +8,7 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"postinstall": "astro sync && astro build",
+		"postinstall": "astro sync",
 		"format": "prettier -w . --plugin-search-dir ."
 	},
 	"dependencies": {

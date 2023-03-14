@@ -3,4 +3,4 @@ useTabs: true
 semi: false
 printWidth: 100
 trailingComma: all
-arrowParens: avoid
+arrowParens: always

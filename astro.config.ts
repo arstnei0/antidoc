@@ -1,19 +1,25 @@
-import { defineConfig } from "astro/config"
-import type { AstroIntegration } from "astro"
+// Astro Integrations
 import solid from "@astrojs/solid-js"
 import mdx from "@astrojs/mdx"
-import civet from "vite-plugin-civet"
 import autoImport from "astro-auto-import"
 import vanillaExtract from "astro-vanilla-extract"
+import compress from "astro-compress"
+
+// Vite Plugins
+import civet from "vite-plugin-civet"
 import autoImportVite from "unplugin-auto-import/vite"
 import icons from "unplugin-icons/vite"
-import { config } from "./src/config"
 
 // Remark and Rehype Plugins
 import { remarkPlugins } from "./src/plugins/remark"
 import { rehypePlugins } from "./src/plugins/rehype"
 import { codeSnippetAutoImport } from "./src/plugins/remark/codeSnippet"
-import compress from "astro-compress"
+
+// Config
+import { config } from "./src/config"
+
+import { defineConfig } from "astro/config"
+import type { AstroIntegration } from "astro"
 
 export default defineConfig({
 	markdown: {
@@ -53,8 +59,6 @@ export default defineConfig({
 			}),
 			icons({ compiler: "astro", autoInstall: true }),
 		],
-		resolve: {
-			alias: { style: "/src/style/theme/$.css", solid: "/src/lib/solid" },
-		},
+		resolve: { alias: { style: "/src/style/theme/$.css", solid: "/src/lib/solid" } },
 	},
 })
