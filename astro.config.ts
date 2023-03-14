@@ -13,6 +13,7 @@ import { config } from "./src/config"
 import { remarkPlugins } from "./src/plugins/remark"
 import { rehypePlugins } from "./src/plugins/rehype"
 import { codeSnippetAutoImport } from "./src/plugins/remark/codeSnippet"
+import compress from "astro-compress"
 
 export default defineConfig({
 	markdown: {
@@ -22,12 +23,11 @@ export default defineConfig({
 	},
 	site: config.siteUrl,
 	integrations: [
-		autoImport({
-			imports: [codeSnippetAutoImport],
-		}),
+		autoImport({ imports: [codeSnippetAutoImport] }),
 		solid(),
 		mdx({}) as AstroIntegration,
 		vanillaExtract(),
+		compress(),
 	],
 	experimental: { assets: true },
 	vite: {
@@ -53,6 +53,8 @@ export default defineConfig({
 			}),
 			icons({ compiler: "astro", autoInstall: true }),
 		],
-		resolve: { alias: { style: "/src/style/theme/$.css", solid: "/src/lib/solid" } },
+		resolve: {
+			alias: { style: "/src/style/theme/$.css", solid: "/src/lib/solid" },
+		},
 	},
 })
